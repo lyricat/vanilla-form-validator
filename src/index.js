@@ -1,4 +1,6 @@
-let root = window || {}
+let root = typeof self == 'object' && self.self === self && self || 
+typeof global == 'object' && global.global === global && global ||
+this || {};
 
 let formData2Map = function (formData) {
   let ret = {}
@@ -118,7 +120,7 @@ let formToDict = function (form) {
 let test = function (formData, conditions) {
   let payload = formData
   if (formData.constructor !== Object) {
-    payload = FormValidator.formToDict(form)
+    payload = formToDict(formData)
   }
   let map = formData2Map(payload)
   let result = _test(payload, conditions, map)
@@ -139,4 +141,4 @@ if (root) {
   root.FormValidator = FormValidator;
 }
 
-export default FormValidator;
+module.exports = FormValidator

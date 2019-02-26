@@ -1,8 +1,8 @@
 {
-  "name": "vanilla-form-validator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "@lyricat/vanilla-form-validator",
+  "version": "1.0.6",
+  "description": "A vanilla form validator.",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-cli --env=dev --mode=development --progress --profile --colors && cp dist/form-validator.min.js docs/demo/",
@@ -40,5 +40,8 @@
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14",
     "webpack-merge": "4.1.0"
+  },
+  "directories": {
+    "doc": "docs"
   }
 }
