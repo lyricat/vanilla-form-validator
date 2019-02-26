@@ -4,7 +4,7 @@ A vanilla form validator.
 
 ## Demo
 
-WIP
+[A simple demo](https://lyricat.github.io/vanilla-form-validator/demo/)
 
 ## Method
 
