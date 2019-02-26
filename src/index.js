@@ -6,7 +6,7 @@ let formData2Map = function (formData) {
   let ret = {}
   for (const key in formData) {
     ret[key] = {
-      pass: false,
+      pass: true,
       value: formData[key]
     }
   }
