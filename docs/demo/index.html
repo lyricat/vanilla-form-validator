@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Validator Demo</title>
+    <script src="./form-validator.min.js"></script>
+    <script>
+      var rules = [
+        'AND',
+        'name',
+        ['OR',
+          ['RE', /^.+@.+$/, 'email'],
+          ['RE', /^[0-9]+$/, 'phone'],
+        ],
+        ['RE', /^[0-9a-zA-Z]{5}[0-9a-zA-Z]+$/, 'password'],
+      ]
+      function log(str) {
+        var output = document.getElementById('output')
+        output.innerText = str
+      }
+      function onSubmit(button, evt) {
+        var form = document.getElementById('form')
+        var ret = FormValidator.test(form, rules)
+        log(JSON.stringify(ret))
+      }
+    </script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      #output {
+        border: 1px solid #ccc;
+        height: 100px;
+        padding: 10px;
+      }
+      input[type="text"], input[type="password"] {
+        width: 320px;
+        padding: 8px 16px;
+      }
+      button {
+        height: 32px;
+        width: 320px;
+        background: white;
+      }
+      .hint {
+        font-size: 14px;
+      }
+    </style>
+</head>
+<body>
+  <h1>Form Validator Demo</h1>
+  <p>Login Form</p>
+  <form id="form">
+    <p>
+      <input type="text" name="name" placeholder="Name, not empty."/>
+    </p>
+    <p>
+      <input type="text" name="email" placeholder="Email address"/>
+    </p>
+    <p>
+      <input type="text" name="phone" placeholder="Phone number, all digits."/>
+    </p>
+    <p class="hint">Email or Phone number, one of them is required.</p>
+    <p>
+      <input type="password" name="password" placeholder="Password, more than 5 charactors, alphanumeric."/>
+    </p>
+    <p>
+      <button type="button" onclick="onSubmit(this, event)">Login</button>
+    </p>
+  </form>
+  <hr>
+  <div id="output">
+  </div>
+</body>
+</html>
