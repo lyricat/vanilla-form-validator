@@ -21,14 +21,18 @@ let handleRECondition = function (formData, conditions, map) {
   if (conditions.length !== 2) {
     return [false, `Incorrect condition: ${conditions}`]
   }
+  let regexp = conditions[0]
+  if (regexp.constructor === String) {
+    regexp = new RegExp(regexp)
+  }
   if (formData.hasOwnProperty(conditions[1])) {
-    let result = conditions[0].test(formData[conditions[1]])
+    let result = regexp.test(formData[conditions[1]])
     if (result) {
       setMapPass(map, conditions[1], true)
       return [true, map, 'Pass.']
     } else {
       setMapPass(map, conditions[1], false)
-      return [false, map, 'Field `' + conditions[1] + '` failed to pass RegExp test `' + conditions[0].toString() + '`']
+      return [false, map, 'Field `' + conditions[1] + '` failed to pass RegExp test `' + regexp.toString() + '`']
     }
   }
   return [false, map, `Can't find field '${conditions[1]}'.`]
