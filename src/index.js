@@ -135,10 +135,20 @@ let test = function (formData, conditions) {
   }
 }
 
+let getErrorFieldName = function getErrorFieldName (ret) {
+  for (var key in ret.fields) {
+    if (!ret.fields[key].pass) {
+      return key
+    }
+  }
+  return ''
+}
+
 let FormValidator = {
   handleRECondition: handleRECondition,
   test: test,
   formToDict: formToDict,
+  getErrorFieldName: getErrorFieldName,
 }
 
 if (root) {
