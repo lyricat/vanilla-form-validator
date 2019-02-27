@@ -39,7 +39,7 @@ let _test = function (formData, conditions, map) {
   // [OP, args ...]
   // in which OP should be:
   //    AND: take one or more args, return true if all args are true
-  //    OR: take one or more args, return false if all args are true
+  //    OR: take one or more args, return true if any of them is true
   //    RE: take two args, the first one should be a regex, the second should be a string, return regex.test(str)
   let lastMessage = 'Not pass.'
   let op = conditions[0]
