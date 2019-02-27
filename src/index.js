@@ -14,7 +14,9 @@ let formData2Map = function (formData) {
 }
 
 let setMapPass = function (m, key, isPass) {
-  m[key].pass = isPass
+  if (m.hasOwnProperty(key)) {
+    m[key].pass = isPass
+  }
 }
 
 let handleRECondition = function (formData, conditions, map) {
